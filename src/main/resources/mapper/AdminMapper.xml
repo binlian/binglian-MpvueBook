@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.binglian.mapper.AdminMapper" >
+  <resultMap id="BaseResultMap" type="com.binglian.pojo.Admin" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="roles" property="roles" jdbcType="CHAR" />
+  </resultMap>
+  <select id="findByName" parameterType="String" resultMap="BaseResultMap">
+  	select * from admin where username=#{username}
+  </select>
+  <select id="getUserPassword" parameterType="String" resultType="String">
+  	select password from admin where username=#{username}
+  </select>
+</mapper>
